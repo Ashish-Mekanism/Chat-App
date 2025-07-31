@@ -6,22 +6,29 @@ import {
   Conatiner,
   EmptyChatMessage,
   FilterIconContainer
-} from "./ChatbarStyle";
+} from "./ConversationsStyle";
 
 import Search from "../../../../public/Search.png";
 import Call from "../../../../public/CallIcon.png";
 import ThreeDot from "../../../../public/3DotIcon.png";
-import ChatArea from "../ChatArea/ChatArea";
+import ChatArea from "../Conversations/ChatArea";
 import { Icon, Text } from "../../typography/typography";
-import { useAtom } from "jotai";
-import { chatPersonDetailsAtom } from "../../Atom/ChatAtom";
-import Textbar from "../../Sidebar/Textbar/Textbar";
+import { useAtomValue } from "jotai";
+import { selectedChatAtom } from "../../Atom/ChatAtom";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import Textbar from "../MessageInput/MessageInput";
 
-const Chatbar = () => {
-  const [personDetails] = useAtom(chatPersonDetailsAtom);
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
-  const isPersonSelected = !!personDetails?.personname;
-  console.log("personDetails ===>", personDetails);
+const Conversations = () => {
+  const selectedChat = useAtomValue(selectedChatAtom);
+
+  const isPersonSelected = !!selectedChat;
+
+  const personName = `${selectedChat?.first_name} ${selectedChat?.last_name}`;
 
   return (
     <ChatbarContainer>
@@ -33,14 +40,19 @@ const Chatbar = () => {
                 IconHeight={"40px"}
                 IconWidth={"40px"}
                 iconradious={"100%"}
-                src={personDetails?.avatar}
+                src={selectedChat?.profile_pic}
               />
               <ChatPersonDetails>
                 <Text fontSize="16px" fontWeight="500">
-                  {personDetails?.personname}
+                  {personName}
                 </Text>
                 <Text fontSize="14px" color="#707991">
-                  last seen {personDetails?.time}
+                  last seen
+                  {"  " +
+                    dayjs
+                      .utc(selectedChat?.last_message_time)
+                      .tz("Asia/Kolkata")
+                      .format("HH:mm")}
                 </Text>
               </ChatPersonDetails>
             </Conatiner>
@@ -65,4 +77,4 @@ const Chatbar = () => {
   );
 };
 
-export default Chatbar;
+export default Conversations;

@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <SidebarContainer>
       <NavContainer>
-        <Icon IconHeight={"14"} IconWidth={"20"} src={menuicon} />
+        <Icon IconHeight="14px" IconWidth="20px" src={menuicon} />
         <Inputbar />
       </NavContainer>
       <Chatlist />

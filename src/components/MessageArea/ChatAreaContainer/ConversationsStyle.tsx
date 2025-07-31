@@ -10,16 +10,15 @@ export const ChatbarContainer = styled.div`
 export const ChatpersonDetailsContainer = styled.div`
   background-color: white;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 8px;
+  padding: 9px 16px;
   width: 100%;
+  border-bottom: 1px solid #e0e0e0;
 `;
 
 export const Conatiner = styled.div`
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 16px;
 `;
 export const ChatPersonDetails = styled.div`
   display: flex;
@@ -27,16 +26,14 @@ export const ChatPersonDetails = styled.div`
   gap: 4px;
 `;
 export const FilterIconContainer = styled.div`
-  width: 15%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 28px;
 `;
 export const EmptyChatMessage = styled.div`
   height: 100%;
   width: 100%;
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 `;

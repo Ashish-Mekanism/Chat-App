@@ -9,23 +9,20 @@ interface InputbarProps {
   inputpadding?: string;
 }
 
-export const Inputbar1 = styled.input<InputbarProps>`
-  height: ${({ inputHeight }) => inputHeight || ""};
-  width: ${({ inputWidth }) => inputWidth || ""};
-  font-size: 16px;
-  background-color: ${({ inputBackgroundColor }) =>
-    inputBackgroundColor || "lightgray"};
-  color: black;
-  border-radius: 18px;
-  margin-left: 20px;
-  border: none;
-  outline: none;
-  /* padding-left: 50px; */
-  padding: 10px 40px;
-`;
-
 export const InputContainer = styled.div`
-  position: absolute;
   display: flex;
   align-items: center;
+  flex: 1;
+  background-color: #f5f5f5;
+  gap: 16px;
+  padding: 8px 16px;
+  border-radius: 22px;
+`;
+
+export const Inputbar1 = styled.input<InputbarProps>`
+  width: 100%;
+  border: none;
+  background-color: ${({ color }) => color || "transparent"};
+  font-size: 16px;
+  outline: none;
 `;
