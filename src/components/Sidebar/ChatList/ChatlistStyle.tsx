@@ -1,11 +1,8 @@
-/** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
-export const ChatlistMainContainer = styled.div`
-  padding-top: 18px;
-`;
+import { Text } from "../../typography/typography";
 
 export const ScrollableChatList = styled.div`
-  max-height: 94vh;
+  max-height: 93vh;
   overflow-y: auto;
 
   scrollbar-width: none;
@@ -22,48 +19,54 @@ interface ChatcontainerProps {
 export const Chatcontainer = styled.div<ChatcontainerProps>`
   display: flex;
   align-items: center;
-  padding: 10px 10px;
-  gap: 20px;
+  padding: 12px 16px;
+  gap: 12px;
   cursor: pointer;
-  background-color: ${({ selected }) => (selected ? "#f0f0f0" : "transparent")};
+  background-color: ${({ selected }) => (selected ? "#f0f0f0" : "#ffffff")};
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
 `;
 
 export const ChatDetailsContainer = styled.div`
   display: flex;
-  gap: 14px;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  overflow: hidden;
 `;
 
 export const Topbar = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-`;
-
-export const BottamBar = styled.div`
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 `;
 
-export const ChatText = styled.div`
+export const BottomBar = styled(Topbar)`
+  margin-top: 4px;
+`;
+
+export const ChatText = styled(Text)`
   font-size: 14px;
   color: #707991;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  width: 100%;
-  min-width: 265px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
 `;
 
-export const MessageCount = styled.div`
+export const MessageCount = styled.span<ChatcontainerProps>`
   font-size: 12px;
   color: #ffffff;
-  height: 24px;
-  width: 24px;
-  background-color: #78e378;
-  text-align: center;
-  border-radius: 100%;
-  padding: 6px 2px;
+  min-width: ${({ selected }) => (selected ? "0px" : "20px")};
+  min-height: ${({ selected }) => (selected ? "0px" : "20px")};
+  background-color: ${({ selected }) => (selected ? "#f9f9f9" : "#78e378")};
+  display: ${({ selected }) => (selected ? "none" : "flex")};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  margin-left: 10px;
 `;

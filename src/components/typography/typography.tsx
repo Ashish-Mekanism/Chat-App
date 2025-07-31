@@ -16,8 +16,9 @@ export const Text = styled.p<TypographyProps>`
   color: ${({ color }) => color || "#000"};
   line-height: ${({ lineHeight }) => lineHeight || "normal"};
   text-align: ${({ align }) => align || ""};
-  margin: ${({ margin }) => margin || "0"};
-  padding: ${({ padding }) => padding || "0"};
+  margin: ${({ margin }) => margin || "0px"};
+  padding: ${({ padding }) => padding || "0px"};
+  word-break: break-all;
 `;
 
 //For Icon and img
@@ -34,12 +35,8 @@ interface IconProps {
 }
 
 export const Icon = styled.img<IconProps>`
-  position: ${({ iconPosition }) => iconPosition || ""};
   height: ${({ IconHeight }) => IconHeight || "16px"};
   width: ${({ IconWidth }) => IconWidth || "16px"};
-  top: ${({ iconTop }) => iconTop || ""};
-  right: ${({ iconRight }) => iconRight || ""};
-  left: ${({ iconLeft }) => iconLeft || ""};
-  bottom: ${({ iconBottom }) => iconBottom || ""};
   border-radius: ${({ iconradious }) => iconradious || ""};
+  cursor: pointer;
 `;
