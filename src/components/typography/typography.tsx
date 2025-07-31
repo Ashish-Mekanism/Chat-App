@@ -21,8 +21,6 @@ export const Text = styled.p<TypographyProps>`
   word-break: break-all;
 `;
 
-//For Icon and img
-
 interface IconProps {
   iconPosition?: string;
   IconHeight?: string;

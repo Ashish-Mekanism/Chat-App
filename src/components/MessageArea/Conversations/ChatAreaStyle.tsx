@@ -28,16 +28,22 @@ export const ChatBody = styled.div`
   gap: 10px;
 `;
 
-export const RightSideChatContainer = styled.div`
-  background-color: #78e378;
+interface chatBubble {
+  isMe: boolean;
+}
+
+export const RightSideChatContainer = styled.div<chatBubble>`
+  ${({ isMe }) => `
+  background-color: ${isMe ? "#78e378" : "white"};
   border-radius: 12px;
   padding: 4px 10px;
   align-self: flex-end;
   max-width: 400px;
   display: flex;
   flex-direction: column;
-
+  align-self: ${isMe ? "flex-end" : "flex-start"};
   word-wrap: wrap;
+  `}
 `;
 
 export const Chatwrapper = styled.div`
@@ -56,6 +62,5 @@ export const LeftSideChatContainer = styled.div`
   max-width: 400px;
   display: flex;
   flex-direction: column;
-
   word-wrap: wrap;
 `;
